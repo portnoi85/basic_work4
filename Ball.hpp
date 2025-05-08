@@ -6,6 +6,7 @@
 class Ball {
 public:
     Ball() = delete;
+    Ball(double radius, Color color);
     Ball(double radius, double mass, Color color);
     Ball(double radius, double mass, Color color, Point center, Velocity velosity);
     void setVelocity(const Velocity& velocity);

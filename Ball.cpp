@@ -2,6 +2,14 @@
 #include <cmath>
 
 /**
+ * Создание объекта с заданием не изменяющихся полей и расчетом массы
+ * @param radius значение радиуса
+ * @param color значение цвета
+ */
+Ball::Ball(double radius, Color color) : 
+        Ball(radius, radius * radius * radius, color) {}
+
+/**
  * Создание объекта с заданием не изменяющихся полей
  * @param radius значение радиуса
  * @param mass значение массы
