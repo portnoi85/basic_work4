@@ -2,19 +2,38 @@
 #include <cmath>
 
 /**
+ * Создание объекта с заданием не изменяющихся полей
+ * @param radius значение радиуса
+ * @param mass значение массы
+ * @param color значение цвета
+ */
+Ball::Ball(double radius, double mass, Color color) : 
+        radius_{radius}, mass_{mass}, color_{color} {}
+
+/**
+ * Создание объекта с заданием дополнительных полей
+ * @param radius значение радиуса
+ * @param mass значение массы
+ * @param color значение цвета
+ * @param velosity значение скорости
+ * @param center значение центра
+ */
+Ball::Ball(double radius, double mass, Color color, Point center, Velocity velosity) :
+        center_{center}, velocity_{velosity}, radius_{radius}, mass_{mass}, color_{color} {}
+
+/**
  * Задает скорость объекта
  * @param velocity новое значение скорости
  */
 void Ball::setVelocity(const Velocity& velocity) {
-    // TODO: место для доработки
+    velocity_ = velocity;
 }
 
 /**
  * @return скорость объекта
  */
 Velocity Ball::getVelocity() const {
-    // TODO: место для доработки
-    return {};
+    return {velocity_};
 }
 
 /**
@@ -26,7 +45,7 @@ Velocity Ball::getVelocity() const {
  * @param painter контекст отрисовки
  */
 void Ball::draw(Painter& painter) const {
-    // TODO: место для доработки
+    painter.draw(center_, radius_, color_);
 }
 
 /**
@@ -34,15 +53,14 @@ void Ball::draw(Painter& painter) const {
  * @param center новый центр объекта
  */
 void Ball::setCenter(const Point& center) {
-    // TODO: место для доработки
+    center_ = center;
 }
 
 /**
  * @return центр объекта
  */
 Point Ball::getCenter() const {
-    // TODO: место для доработки
-    return {};
+    return {center_};
 }
 
 /**
@@ -51,8 +69,7 @@ Point Ball::getCenter() const {
  * не требуется
  */
 double Ball::getRadius() const {
-    // TODO: место для доработки
-    return {};
+    return {radius_};
 }
 
 /**
@@ -63,6 +80,5 @@ double Ball::getRadius() const {
  * эквивалентна объему: PI * radius^3 * 4. / 3.
  */
 double Ball::getMass() const {
-    // TODO: место для доработки
-    return {};
+    return {mass_};
 }
