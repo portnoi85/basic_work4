@@ -16,10 +16,13 @@ public:
     Point getCenter() const;
     double getRadius() const;
     double getMass() const;
+    void setCollidable(bool collidable);
+    bool isCollidable();
 private:
     Point center_{};
     Velocity velocity_{};
     double radius_{};
     double mass_{};
     Color color_{};
+    bool collidable_{true};
 };

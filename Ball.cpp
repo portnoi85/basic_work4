@@ -90,3 +90,18 @@ double Ball::getRadius() const {
 double Ball::getMass() const {
     return {mass_};
 }
+
+/**
+ * Задает разрешение для обработки столкновений
+ * @param collidable новое значение для разрешения обработки столкновений 
+ */
+void Ball::setCollidable(bool collidable) {
+    collidable_ = collidable;
+}
+
+/**
+ * @return разрешение для обработки столкновений
+ */
+bool Ball::isCollidable() {
+    return {collidable_};
+}

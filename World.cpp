@@ -42,6 +42,7 @@ World::World(const std::string& worldFilePath) {
         Ball ball{radius, color};
         ball.setCenter(center);
         ball.setVelocity(velosity);
+        ball.setCollidable(isCollidable);
         balls.push_back(ball);
     }
 }
