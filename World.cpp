@@ -57,6 +57,10 @@ void World::show(Painter& painter) const {
     for (const Ball& ball : balls) {
         ball.draw(painter);
     }
+    for (const Dust_time& dust_time : dusts) {
+        dust_time.dust.draw(painter);
+    }
+
 }
 
 /// @brief Обновляет состояние мира
@@ -80,6 +84,5 @@ void World::update(double time) {
     time += restTime;
     const auto ticks = static_cast<size_t>(std::floor(time / timePerTick));
     restTime = time - double(ticks) * timePerTick;
-
-    physics.update(balls, ticks);
+    physics.update(balls, dusts, ticks);
 }

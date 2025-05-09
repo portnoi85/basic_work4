@@ -6,18 +6,20 @@
 class Ball {
 public:
     Ball() = delete;
-    Ball(double radius, Color color);
-    Ball(double radius, double mass, Color color);
-    Ball(double radius, double mass, Color color, Point center, Velocity velosity);
+    Ball(double radius, const Color& color);
+    Ball(double radius, double mass, const Color& color);
+    Ball(double radius, double mass, const Color& color, const Point& center, const Velocity& velosity);
     void setVelocity(const Velocity& velocity);
     Velocity getVelocity() const;
-    void draw(Painter& painter) const;
     void setCenter(const Point& center);
     Point getCenter() const;
     double getRadius() const;
     double getMass() const;
     void setCollidable(bool collidable);
     bool isCollidable();
+    void draw(Painter& painter) const;
+    Point getCollisionPoint(const Ball& b);
+
 private:
     Point center_{};
     Velocity velocity_{};

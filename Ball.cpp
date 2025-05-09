@@ -6,7 +6,7 @@
  * @param radius значение радиуса
  * @param color значение цвета
  */
-Ball::Ball(double radius, Color color) : 
+Ball::Ball(double radius, const Color& color) : 
         Ball(radius, radius * radius * radius, color) {}
 
 /**
@@ -15,7 +15,7 @@ Ball::Ball(double radius, Color color) :
  * @param mass значение массы
  * @param color значение цвета
  */
-Ball::Ball(double radius, double mass, Color color) : 
+Ball::Ball(double radius, double mass, const Color& color) : 
         radius_{radius}, mass_{mass}, color_{color} {}
 
 /**
@@ -26,7 +26,7 @@ Ball::Ball(double radius, double mass, Color color) :
  * @param velosity значение скорости
  * @param center значение центра
  */
-Ball::Ball(double radius, double mass, Color color, Point center, Velocity velosity) :
+Ball::Ball(double radius, double mass, const Color& color, const Point& center, const Velocity& velosity) :
         center_{center}, velocity_{velosity}, radius_{radius}, mass_{mass}, color_{color} {}
 
 /**
@@ -104,4 +104,19 @@ void Ball::setCollidable(bool collidable) {
  */
 bool Ball::isCollidable() {
     return {collidable_};
+}
+/**
+ * Возвращает точку, лежащую на линии, проходящей через центры окружностей
+ * на расстоянии от этих центров, пропорциональном радиусам окружностей.
+ * Если окружности пересекаются в одной точке, результатом будет эта точка
+ * @return возвращает точку пересечения окружностей
+ */
+Point Ball::getCollisionPoint(const Ball& b) {
+    Point point;
+    double bx = b.getCenter().x;
+    double by = b.getCenter().y;
+    double br = b.getRadius();
+    point.x = center_.x +(bx - center_.x) * (radius_) / (radius_ + br);
+    point.y = center_.y +(by - center_.y) * (radius_) / (radius_ + br);
+    return {point};
 }
