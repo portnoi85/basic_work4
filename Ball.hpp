@@ -18,7 +18,6 @@ public:
     void setCollidable(bool collidable);
     bool isCollidable();
     void draw(Painter& painter) const;
-    Point getCollisionPoint(const Ball& b);
 
 private:
     Point center_{};

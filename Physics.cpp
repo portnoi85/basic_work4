@@ -31,6 +31,19 @@ void Physics::update(std::vector<Ball>& balls, std::vector<Dust_time>& dusts, co
     }
 }
 
+Point Physics::getCollisionPoint(const Ball& a, const Ball& b) const {
+    Point point;
+    double ax = a.getCenter().x;
+    double ay = a.getCenter().y;
+    double ar = a.getRadius();
+    double bx = b.getCenter().x;
+    double by = b.getCenter().y;
+    double br = b.getRadius();
+    point.x = ax +(bx - ax) * (ar) / (ar + br);
+    point.y = ay +(by - ay) * (ar) / (ar + br);
+    return {point};
+}
+
 void Physics::collideBalls(std::vector<Ball>& balls) const {
     for (auto a = balls.begin(); a != balls.end(); ++a) {
         if (a->isCollidable() == false) {
@@ -69,7 +82,7 @@ void Physics::collideBalls(std::vector<Ball>& balls, std::vector<Dust_time>& dus
                 collisionDistance * collisionDistance;
 
             if (distanceBetweenCenters2 < collisionDistance2) {
-                Point p = a->getCollisionPoint(*b);
+                Point p = getCollisionPoint(*a, *b);
                 createDusts(dusts, p, 0, 360);
                 processCollision(*a, *b, distanceBetweenCenters2);
             }

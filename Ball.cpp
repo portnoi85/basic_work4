@@ -105,18 +105,3 @@ void Ball::setCollidable(bool collidable) {
 bool Ball::isCollidable() {
     return {collidable_};
 }
-/**
- * Возвращает точку, лежащую на линии, проходящей через центры окружностей
- * на расстоянии от этих центров, пропорциональном радиусам окружностей.
- * Если окружности пересекаются в одной точке, результатом будет эта точка
- * @return возвращает точку пересечения окружностей
- */
-Point Ball::getCollisionPoint(const Ball& b) {
-    Point point;
-    double bx = b.getCenter().x;
-    double by = b.getCenter().y;
-    double br = b.getRadius();
-    point.x = center_.x +(bx - center_.x) * (radius_) / (radius_ + br);
-    point.y = center_.y +(by - center_.y) * (radius_) / (radius_ + br);
-    return {point};
-}
