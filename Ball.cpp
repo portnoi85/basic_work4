@@ -102,6 +102,6 @@ void Ball::setCollidable(bool collidable) {
 /**
  * @return разрешение для обработки столкновений
  */
-bool Ball::isCollidable() {
+bool Ball::isCollidable() const{
     return {collidable_};
 }

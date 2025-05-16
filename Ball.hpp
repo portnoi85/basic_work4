@@ -16,7 +16,7 @@ public:
     double getRadius() const;
     double getMass() const;
     void setCollidable(bool collidable);
-    bool isCollidable();
+    bool isCollidable() const;
     void draw(Painter& painter) const;
 
 private:
