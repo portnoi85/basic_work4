@@ -17,7 +17,7 @@ public:
     double getRadius() const;
     double getMass() const;
     void setCollidable(bool collidable);
-    bool isCollidable();
+    bool isCollidable() const;
 private:
     Point center_{};
     Velocity velocity_{};
