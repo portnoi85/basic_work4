@@ -9,7 +9,6 @@ class Physics {
     void setWorldBox(const Point& topLeft, const Point& bottomRight);
     void update(std::vector<Ball>& balls, size_t ticks) const;
     void update(std::vector<Ball>& balls, std::vector<Dust_time>& dusts, size_t ticks) const;
-    Point getCollisionPoint(const Ball& a, const Ball& b) const;
 
   private:
     void collideBalls(std::vector<Ball>& balls) const;
@@ -22,6 +21,7 @@ class Physics {
     void move(std::vector<Dust_time>& dusts) const;
     void processCollision(Ball& a, Ball& b,
                           double distanceBetweenCenters2) const;
+    Point getCollisionPoint(const Ball& a, const Ball& b) const;
 
   private:
     Point topLeft;
